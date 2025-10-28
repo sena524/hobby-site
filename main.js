@@ -1,9 +1,21 @@
 const DATA_TYPES = {
-  タイトル: "string",
-  著者: "string",
-  Wikipediaの紹介: "string",
-  ジャンル: "category",
+  曲名: "string",
+  アーティスト: "category",
+  アーティスト説明: "string",
+  アルバム: "string",
+  リリース: "string",
+  ジャンル: "category", // 範疇情報
   おすすめ度: "number",
+};
+
+const DISPLAIES_FOR_SP = {
+  曲名: "primary",
+  アーティスト: "secondary",
+  アーティスト説明: "none",
+  アルバム: "none",
+  リリース: "none",
+  ジャンル: "none",
+  おすすめ度: "secondary",
 };
 
 const numeralColumns = {};
@@ -103,6 +115,7 @@ function createTableContents(records) {
     const th = document.createElement("th");
     th.textContent = key; // 各ヘッダーセルにカラム名を設定
     th.dataset.type = DATA_TYPES[key]; // データ型情報を dataset に与える
+    th.dataset.spDisplay = DISPLAIES_FOR_SP[key]; // スマホの表示情報を dataset に与える
     th.addEventListener("click", function () {
       setSort(th, records);
     });
@@ -139,6 +152,7 @@ function createTableBodyRows(tbody, records, keyword) {
 
     for (let key in record) {
       const td = document.createElement("td");
+      td.dataset.spDisplay = DISPLAIES_FOR_SP[key]; // スマホの表示情報を dataset に与える      
       const text = record[key];
 
       // keywordが指定されている場合、キーワードを強調表示する
