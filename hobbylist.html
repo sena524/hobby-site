@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Hobby List</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // この中にコードを書いていく
+      fetch("./hobbies.csv")
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (data) {
+          const records = parseCSV(data);
+          const elements = createTableContents(records);
+          const master = document.getElementById("master");
+          const table = master.querySelector("table");
+          table.append(...elements);
+
+          // 検索機能の実装
+          const tbody = elements[1]; // テーブルのデータ部分（tbody）を取得
+          const input = master.querySelector("input"); // master内にある検索用の<input>要素を取得
+          input.addEventListener("input", function () {
+            const keyword = input.value; // 検索ボックスに入力された値を取得
+            console.log(keyword); // 現在の検索キーワードをコンソールに出力（実際の検索処理は後で実装する部分）
+          input.addEventListener("input", function () {
+            const keyword = input.value; // 検索ボックスに入力された値を取得
+            // tbody の子要素を削除
+            while (tbody.firstChild) {
+              tbody.removeChild(tbody.firstChild);
+            }
+            createTableBodyRows(tbody, records, keyword);
+          });
+          });           
+        });
+    });
+    
+
+        function parseCSV(data) {
+      // 改行で行を分割
+      const rows = data.split("\n");
+      // 最初の行をヘッダーとして分割
+      const headers = rows[0].split(",");
+
+      // 各行を連想配列に変換したものを格納する配列を用意
+      const records = [];
+
+      // 2行目以降（データ行）を連想配列に変換して格納
+      for (let i = 1; i < rows.length; i++) {
+        const values = rows[i].split(",");
+        let record = {};
+        for (let j = 0; j < headers.length; j++) {
+          record[headers[j]] = values[j];
+        }
+        records.push(record);
+      }
+      return records;
+    }
+
+    function createTable(records) {
+      const table = document.createElement("table");
+
+      // 見出し行を生成
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+      for (let key in records[0]) {
+        const th = document.createElement("th");
+        th.textContent = key;
+        headerRow.append(th);
+      }
+      thead.append(headerRow);
+      table.append(thead);
+      // ↑ 以上を追加
+      return table;
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
