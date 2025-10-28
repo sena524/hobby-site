@@ -18,14 +18,14 @@ body {
 
 table {
   border-collapse: collapse;
-  border: solid 1px maroon;
-  background-color: white;
+  border: solid 1px  rgb(99, 96, 96);
+  background-color: whitesmoke;
 }
 tr {
-  border-top: solid 1px maroon;
+  border-top: solid 1px  rgb(99, 96, 96);
 }
 th, td {
-  border-left: solid 1px maroon;
+  border-left: solid 1px  rgb(99, 96, 96);
 }
 th {
   cursor: pointer;
@@ -49,7 +49,7 @@ th {
 }
 
 .stats {
-  border: solid 1px maroon;
+  border: solid 1px rgb(130, 161, 197);
   background-color: white;
   height: 250px;
   > .graph {
@@ -59,9 +59,9 @@ th {
       position: absolute;
       bottom: 60px;
       width: 10px;
-      background-color: maroon;
+      background-color: rgb(130, 161, 197);
       &.-selected {
-        background-color: red;
+        background-color: palevioletred;
       }
       > .label {
         position: absolute;
@@ -75,7 +75,7 @@ th {
     }
   }
   > .selector {
-    border-top: solid 1px maroon;
+    border-top: solid 1px  rgb(99, 96, 96);
     margin: 0;
     padding: 0;
     height: 20px;
@@ -87,10 +87,10 @@ th {
       cursor: pointer;
       flex-grow: 1;
       + li {
-        border-left: solid 1px maroon;
+        border-left: solid 1px  rgb(99, 96, 96);
       }
       &:hover, &.-selected {
-        background-color: maroon;
+        background-color:  palevioletred;
         color: white;
       }
     }
@@ -144,12 +144,12 @@ th {
 
 #detail {
   dl {
-    border-top: solid 1px maroon;
+    border-top: solid 1px whitesmoke;
     padding-top: 0.7em;
     padding-bottom: 0.7em;
     margin: 0;
     &:last-child {
-      border-bottom:  solid 1px maroon;
+      border-bottom:  solid 1px whitesmoke;
     }
   }
   dt {
@@ -165,7 +165,7 @@ th {
     border: none;
     width: 100%;
     color: white;
-    background-color: maroon;
+    background-color: palevioletred;
     line-height: 2.5;
     border-radius: 0.5lh;
   }
